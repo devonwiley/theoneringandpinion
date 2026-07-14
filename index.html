@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RANDYS Worldwide — Operations Dashboards</title>
+  <style>
+    :root { --orange:#F26122; --black:#231F20; --gray:#6b6660; --line:#e6e2dc; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:'Segoe UI',system-ui,Arial,sans-serif; color:var(--black);
+           background:#faf8f5; display:flex; min-height:100vh; align-items:center; justify-content:center; padding:24px; }
+    .wrap { width:100%; max-width:760px; }
+    .head { display:flex; align-items:baseline; gap:12px; margin-bottom:4px; }
+    h1 { font-size:26px; margin:0; letter-spacing:.3px; }
+    .bar { height:4px; width:64px; background:var(--orange); border-radius:2px; margin:14px 0 26px; }
+    .tag { color:var(--gray); font-size:13px; text-transform:uppercase; letter-spacing:1px; }
+    .cards { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    @media (max-width:620px){ .cards{ grid-template-columns:1fr; } }
+    a.card { display:block; text-decoration:none; color:inherit; background:#fff; border:1px solid var(--line);
+             border-radius:12px; padding:22px; transition:transform .12s ease, box-shadow .12s ease, border-color .12s; }
+    a.card:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(35,31,32,.10); border-color:var(--orange); }
+    .card h2 { margin:0 0 6px; font-size:18px; }
+    .card p { margin:0; color:var(--gray); font-size:13px; line-height:1.5; }
+    .card .go { margin-top:14px; color:var(--orange); font-weight:600; font-size:13px; }
+    footer { margin-top:28px; color:var(--gray); font-size:12px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="head"><h1>RANDYS Worldwide</h1><span class="tag">Operations</span></div>
+    <div class="bar"></div>
+    <div class="cards">
+      <a class="card" href="/RANDYS_Build_Priority_Planner_v9.html">
+        <h2>Production &amp; Sales Order Fulfillment Plan</h2>
+        <p>Build priority, on-hand inventory, buildable quantities and transfers across the DC network.</p>
+        <div class="go">Open dashboard →</div>
+      </a>
+      <a class="card" href="/RANDYS_OpenOrders.html">
+        <h2>Open Orders &amp; Backlog Review</h2>
+        <p>Past due / current / future backlog, fillable-from-stock, make vs. buy, and vendor exposure.</p>
+        <div class="go">Open dashboard →</div>
+      </a>
+      <a class="card" href="/IQMS_OpenOrders.html">
+        <h2>IQMS Open Orders &amp; Backlog</h2>
+        <p>Open order backlog across the IQMS brands (Carli, Cognito, Icon, LaserTech, Van Compass) — past due / current / future by customer and brand.</p>
+        <div class="go">Open dashboard →</div>
+      </a>
+    </div>
+    <footer>Confidential — RANDYS Worldwide internal operations. Data refreshed from the warehouse.</footer>
+  </div>
+</body>
+</html>
