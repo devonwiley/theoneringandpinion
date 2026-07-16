@@ -8,21 +8,26 @@
     :root { --orange:#F26122; --black:#231F20; --gray:#6b6660; --line:#e6e2dc; }
     * { box-sizing:border-box; }
     body { margin:0; font-family:'Segoe UI',system-ui,Arial,sans-serif; color:var(--black);
-           background:#faf8f5; display:flex; min-height:100vh; align-items:center; justify-content:center; padding:24px; }
+           display:flex; min-height:100vh; align-items:center; justify-content:center; padding:24px;
+           background:#12181c; }
+    /* Full-page photo background with a readable scrim (fixed so it stays put on scroll). */
+    body::before { content:""; position:fixed; inset:0; z-index:-1;
+           background:linear-gradient(rgba(18,24,28,.42), rgba(18,24,28,.62)), url('bg.jpg') center/cover no-repeat fixed; }
     .wrap { width:100%; max-width:760px; }
     .head { display:flex; align-items:baseline; gap:12px; margin-bottom:4px; }
-    h1 { font-size:26px; margin:0; letter-spacing:.3px; }
-    .bar { height:4px; width:64px; background:var(--orange); border-radius:2px; margin:14px 0 26px; }
-    .tag { color:var(--gray); font-size:13px; text-transform:uppercase; letter-spacing:1px; }
+    h1 { font-size:28px; margin:0; letter-spacing:.3px; color:#fff; text-shadow:0 2px 14px rgba(0,0,0,.55); }
+    .bar { height:4px; width:64px; background:var(--orange); border-radius:2px; margin:14px 0 26px; box-shadow:0 1px 6px rgba(0,0,0,.4); }
+    .tag { color:rgba(255,255,255,.9); font-size:13px; text-transform:uppercase; letter-spacing:1px; text-shadow:0 1px 8px rgba(0,0,0,.5); }
     .cards { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
     @media (max-width:620px){ .cards{ grid-template-columns:1fr; } }
-    a.card { display:block; text-decoration:none; color:inherit; background:#fff; border:1px solid var(--line);
-             border-radius:12px; padding:22px; transition:transform .12s ease, box-shadow .12s ease, border-color .12s; }
-    a.card:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(35,31,32,.10); border-color:var(--orange); }
+    a.card { display:block; text-decoration:none; color:inherit; background:rgba(255,255,255,.94); border:1px solid rgba(255,255,255,.5);
+             border-radius:12px; padding:22px; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+             box-shadow:0 6px 22px rgba(0,0,0,.22); transition:transform .12s ease, box-shadow .12s ease, border-color .12s; }
+    a.card:hover { transform:translateY(-2px); box-shadow:0 12px 30px rgba(0,0,0,.32); border-color:var(--orange); }
     .card h2 { margin:0 0 6px; font-size:18px; }
     .card p { margin:0; color:var(--gray); font-size:13px; line-height:1.5; }
     .card .go { margin-top:14px; color:var(--orange); font-weight:600; font-size:13px; }
-    footer { margin-top:28px; color:var(--gray); font-size:12px; }
+    footer { margin-top:28px; color:rgba(255,255,255,.9); font-size:12px; text-shadow:0 1px 8px rgba(0,0,0,.6); }
   </style>
 </head>
 <body>
