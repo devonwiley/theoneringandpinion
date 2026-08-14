@@ -13,13 +13,14 @@
     /* Full-page photo background with a readable scrim (fixed so it stays put on scroll). */
     body::before { content:""; position:fixed; inset:0; z-index:-1;
            background:linear-gradient(rgba(18,24,28,.42), rgba(18,24,28,.62)), url('bg.jpg') center/cover no-repeat fixed; }
-    .wrap { width:100%; max-width:760px; }
+    .wrap { width:100%; max-width:1080px; }
     .head { display:flex; align-items:baseline; gap:12px; margin-bottom:4px; }
     h1 { font-size:28px; margin:0; letter-spacing:.3px; color:#fff; text-shadow:0 2px 14px rgba(0,0,0,.55); }
     .bar { height:4px; width:64px; background:var(--orange); border-radius:2px; margin:14px 0 26px; box-shadow:0 1px 6px rgba(0,0,0,.4); }
     .tag { color:rgba(255,255,255,.9); font-size:13px; text-transform:uppercase; letter-spacing:1px; text-shadow:0 1px 8px rgba(0,0,0,.5); }
-    .cards { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
     .card.wide { grid-column:1 / -1; }
+    @media (max-width:900px){ .cards{ grid-template-columns:1fr 1fr; } }
     @media (max-width:620px){ .cards{ grid-template-columns:1fr; } }
     a.card { display:block; text-decoration:none; color:inherit; background:rgba(255,255,255,.94); border:1px solid rgba(255,255,255,.5);
              border-radius:12px; padding:22px; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
@@ -44,7 +45,7 @@
     <div class="head"><h1>RANDYS Worldwide</h1><span class="tag">Operations</span></div>
     <div class="bar"></div>
     <div class="cards">
-      <a class="card wide" href="https://openorders.vercel.app/">
+      <a class="card" href="https://openorders.vercel.app/">
         <h2>All Open Orders</h2>
         <p>Combined RANDYS + IQMS open-order backlog in one view — composition by status, by system, and IQMS by brand.</p>
         <div class="go">Open dashboard →</div>
@@ -59,14 +60,19 @@
         <p>Open order backlog across the IQMS brands (Carli, Cognito, Icon, LaserTech, Van Compass) — past due / current / future by customer and brand.</p>
         <div class="go">Open dashboard →</div>
       </a>
-      <a class="card" href="https://safetynet-bnpv.vercel.app/">
-        <h2>AutoZone Analytics Hub</h2>
-        <p>AutoZone account management tools — order analysis &amp; fill tools, historical sales, penalty &amp; fee tracker, and cancellations.</p>
+      <a class="card" href="https://councilofelron.vercel.app/">
+        <h2>Council of Elron</h2>
+        <p>Executive dashboard — month-to-date sales, open purchase orders, inventory levels, and production KPIs.</p>
         <div class="go">Open dashboard →</div>
       </a>
-      <a class="card" href="https://oreilly-hub.vercel.app/index.html">
-        <h2>O'Reilly Analytics Hub</h2>
-        <p>O'Reilly account management tools — order analysis &amp; fill tools, historical sales, penalty &amp; fee tracker, and cancellations.</p>
+      <a class="card" href="https://ops-kpi-dashboard-seven.vercel.app/">
+        <h2>RWW Key Performance Indicators</h2>
+        <p>Operational KPIs for month-over-month tracking and comparison.</p>
+        <div class="go">Open dashboard →</div>
+      </a>
+      <a class="card belt" href="https://tti-brand-leaderboard-seven.vercel.app/">
+        <h2>RWW Champion</h2>
+        <p>Monthly brand competition across 5 key targets to improve. The championship belt is awarded each month to our most improved business unit.</p>
         <div class="go">Open dashboard →</div>
       </a>
       <a class="card" href="https://fellowshipoftheringandpinion.vercel.app/">
@@ -79,34 +85,34 @@
         <p>Carli demand vs. live on-hand — fulfill-from-stock, build priority, and purchasing priority across the multi-level BoM.</p>
         <div class="go">Open dashboard →</div>
       </a>
-      <a class="card" href="https://duragrips.vercel.app/">
-        <h2>Duragrip Scheduler</h2>
-        <p>YDG Duragrip production schedule — plant-to-DC demand, build sequence, and Gantt timeline.</p>
-        <div class="go">Open dashboard →</div>
-      </a>
       <a class="card" href="https://reman-z.vercel.app/">
         <h2>Reman Planning</h2>
         <p>Reman scheduling across transfer cases, manual transmissions, and differentials.</p>
         <div class="go">Open dashboard →</div>
       </a>
-      <a class="card" href="https://councilofelron.vercel.app/">
-        <h2>Council of Elron</h2>
-        <p>Executive dashboard — month-to-date sales, open purchase orders, inventory levels, and production KPIs.</p>
+      <a class="card" href="https://forecast-dashboard-seven.vercel.app/">
+        <h2>SIOP Planning HUB</h2>
+        <p>Forecasting &amp; inventory stocking KPIs along with purchase order placement tools.</p>
+        <div class="go">Open dashboard →</div>
+      </a>
+      <a class="card" href="https://safetynet-bnpv.vercel.app/">
+        <h2>AutoZone Analytics Hub</h2>
+        <p>AutoZone account management tools — order analysis &amp; fill tools, historical sales, penalty &amp; fee tracker, and cancellations.</p>
+        <div class="go">Open dashboard →</div>
+      </a>
+      <a class="card" href="https://oreilly-hub.vercel.app/index.html">
+        <h2>O'Reilly Analytics Hub</h2>
+        <p>O'Reilly account management tools — order analysis &amp; fill tools, historical sales, penalty &amp; fee tracker, and cancellations.</p>
+        <div class="go">Open dashboard →</div>
+      </a>
+      <a class="card" href="https://duragrips.vercel.app/">
+        <h2>Duragrip Scheduler</h2>
+        <p>YDG Duragrip production schedule — plant-to-DC demand, build sequence, and Gantt timeline.</p>
         <div class="go">Open dashboard →</div>
       </a>
       <a class="card" href="https://low-cost-rebels.vercel.app/">
         <h2>Supply Chain Dashboard</h2>
         <p>Cost-lowering initiatives and purchase price variance tracking.</p>
-        <div class="go">Open dashboard →</div>
-      </a>
-      <a class="card belt" href="https://tti-brand-leaderboard-seven.vercel.app/">
-        <h2>RWW Champion</h2>
-        <p>Monthly brand competition across 5 key targets to improve. The championship belt is awarded each month to our most improved business unit.</p>
-        <div class="go">Open dashboard →</div>
-      </a>
-      <a class="card" href="https://ops-kpi-dashboard-seven.vercel.app/">
-        <h2>RWW Key Performance Indicators</h2>
-        <p>Operational KPIs for month-over-month tracking and comparison.</p>
         <div class="go">Open dashboard →</div>
       </a>
     </div>
