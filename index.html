@@ -22,6 +22,17 @@
     .card.wide { grid-column:1 / -1; }
     @media (max-width:900px){ .cards{ grid-template-columns:1fr 1fr; } }
     @media (max-width:620px){ .cards{ grid-template-columns:1fr; } }
+    /* Collapsible section groups (native <details>, no JS). */
+    .group { margin-bottom:26px; }
+    .group > summary { list-style:none; cursor:pointer; display:flex; align-items:center; gap:10px;
+             color:#fff; font-size:14px; font-weight:600; letter-spacing:.6px; text-transform:uppercase;
+             padding:10px 2px; margin-bottom:16px; text-shadow:0 1px 8px rgba(0,0,0,.6);
+             border-bottom:1px solid rgba(255,255,255,.2); }
+    .group > summary::-webkit-details-marker { display:none; }
+    .group > summary::before { content:"▸"; color:var(--orange); font-size:13px; transition:transform .15s ease; }
+    .group[open] > summary::before { transform:rotate(90deg); }
+    .group > summary .count { margin-left:auto; font-size:12px; font-weight:500; letter-spacing:0;
+             text-transform:none; color:rgba(255,255,255,.7); }
     a.card { display:block; text-decoration:none; color:inherit; background:rgba(255,255,255,.94); border:1px solid rgba(255,255,255,.5);
              border-radius:12px; padding:22px; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
              box-shadow:0 6px 22px rgba(0,0,0,.22); transition:transform .12s ease, box-shadow .12s ease, border-color .12s; }
@@ -44,83 +55,106 @@
   <div class="wrap">
     <div class="head"><h1>RANDYS Worldwide</h1><span class="tag">Operations</span></div>
     <div class="bar"></div>
-    <div class="cards">
-      <a class="card" href="https://openorders.vercel.app/">
-        <h2>All Open Orders</h2>
-        <p>Combined RANDYS + IQMS open-order backlog in one view — composition by status, by system, and IQMS by brand.</p>
-        <div class="go">Open dashboard →</div>
-      </a>
-      <a class="card" href="https://randysopenorders.vercel.app/">
-        <h2>RANDYS Open Orders</h2>
-        <p>Past due / current / future backlog, fillable-from-stock, make vs. buy, and vendor exposure.</p>
-        <div class="go">Open dashboard →</div>
-      </a>
-      <a class="card" href="https://iqmsopenorders.vercel.app/">
-        <h2>IQMS Open Orders</h2>
-        <p>Open order backlog across the IQMS brands (Carli, Cognito, Icon, LaserTech, Van Compass) — past due / current / future by customer and brand.</p>
-        <div class="go">Open dashboard →</div>
-      </a>
-      <a class="card" href="https://councilofelron.vercel.app/">
-        <h2>Council of Elron</h2>
-        <p>Executive dashboard — month-to-date sales, open purchase orders, inventory levels, and production KPIs.</p>
-        <div class="go">Open dashboard →</div>
-      </a>
-      <a class="card" href="https://ops-kpi-dashboard-seven.vercel.app/">
-        <h2>RWW Key Performance Indicators</h2>
-        <p>Operational KPIs for month-over-month tracking and comparison.</p>
-        <div class="go">Open dashboard →</div>
-      </a>
-      <a class="card belt" href="https://tti-brand-leaderboard-seven.vercel.app/">
-        <h2>RWW Champion</h2>
-        <p>Monthly brand competition across 5 key targets to improve. The championship belt is awarded each month to our most improved business unit.</p>
-        <div class="go">Open dashboard →</div>
-      </a>
-      <a class="card" href="https://fellowshipoftheringandpinion.vercel.app/">
-        <h2>RANDYS Production Planner</h2>
-        <p>Build priority, on-hand inventory, buildable quantities and transfers across the DC network.</p>
-        <div class="go">Open dashboard →</div>
-      </a>
-      <a class="card" href="https://carlisuspension.vercel.app/">
-        <h2>CARLI Production Planner</h2>
-        <p>Carli demand vs. live on-hand — fulfill-from-stock, build priority, and purchasing priority across the multi-level BoM.</p>
-        <div class="go">Open dashboard →</div>
-      </a>
-      <a class="card" href="https://iconvehicledyn.vercel.app/">
-        <h2>ICON Production Planner</h2>
-        <p>ICON Vehicle Dynamics demand vs. live on-hand — fulfill-from-stock, build priority, and purchasing priority across the multi-level BoM.</p>
-        <div class="go">Open dashboard →</div>
-      </a>
-      <a class="card" href="https://reman-z.vercel.app/">
-        <h2>Reman Planning</h2>
-        <p>Reman scheduling across transfer cases, manual transmissions, and differentials.</p>
-        <div class="go">Open dashboard →</div>
-      </a>
-      <a class="card" href="https://forecast-dashboard-seven.vercel.app/">
-        <h2>SIOP Planning HUB</h2>
-        <p>Forecasting &amp; inventory stocking KPIs along with purchase order placement tools.</p>
-        <div class="go">Open dashboard →</div>
-      </a>
-      <a class="card" href="https://safetynet-bnpv.vercel.app/">
-        <h2>AutoZone Analytics Hub</h2>
-        <p>AutoZone account management tools — order analysis &amp; fill tools, historical sales, penalty &amp; fee tracker, and cancellations.</p>
-        <div class="go">Open dashboard →</div>
-      </a>
-      <a class="card" href="https://oreilly-hub.vercel.app/index.html">
-        <h2>O'Reilly Analytics Hub</h2>
-        <p>O'Reilly account management tools — order analysis &amp; fill tools, historical sales, penalty &amp; fee tracker, and cancellations.</p>
-        <div class="go">Open dashboard →</div>
-      </a>
-      <a class="card" href="https://duragrips.vercel.app/">
-        <h2>Duragrip Scheduler</h2>
-        <p>YDG Duragrip production schedule — plant-to-DC demand, build sequence, and Gantt timeline.</p>
-        <div class="go">Open dashboard →</div>
-      </a>
-      <a class="card" href="https://low-cost-rebels.vercel.app/">
-        <h2>Supply Chain Dashboard</h2>
-        <p>Cost-lowering initiatives and purchase price variance tracking.</p>
-        <div class="go">Open dashboard →</div>
-      </a>
-    </div>
+    <details class="group">
+      <summary>Open Orders <span class="count">3 dashboards</span></summary>
+      <div class="cards">
+        <a class="card" href="https://openorders.vercel.app/">
+          <h2>All Open Orders</h2>
+          <p>Combined RANDYS + IQMS open-order backlog in one view — composition by status, by system, and IQMS by brand.</p>
+          <div class="go">Open dashboard →</div>
+        </a>
+        <a class="card" href="https://randysopenorders.vercel.app/">
+          <h2>RANDYS Open Orders</h2>
+          <p>Past due / current / future backlog, fillable-from-stock, make vs. buy, and vendor exposure.</p>
+          <div class="go">Open dashboard →</div>
+        </a>
+        <a class="card" href="https://iqmsopenorders.vercel.app/">
+          <h2>IQMS Open Orders</h2>
+          <p>Open order backlog across the IQMS brands (Carli, Cognito, Icon, LaserTech, Van Compass) — past due / current / future by customer and brand.</p>
+          <div class="go">Open dashboard →</div>
+        </a>
+      </div>
+    </details>
+    <details class="group">
+      <summary>Executive &amp; KPIs <span class="count">3 dashboards</span></summary>
+      <div class="cards">
+        <a class="card" href="https://councilofelron.vercel.app/">
+          <h2>Council of Elron</h2>
+          <p>Executive dashboard — month-to-date sales, open purchase orders, inventory levels, and production KPIs.</p>
+          <div class="go">Open dashboard →</div>
+        </a>
+        <a class="card" href="https://ops-kpi-dashboard-seven.vercel.app/">
+          <h2>RWW Key Performance Indicators</h2>
+          <p>Operational KPIs for month-over-month tracking and comparison.</p>
+          <div class="go">Open dashboard →</div>
+        </a>
+        <a class="card belt" href="https://tti-brand-leaderboard-seven.vercel.app/">
+          <h2>RWW Champion</h2>
+          <p>Monthly brand competition across 5 key targets to improve. The championship belt is awarded each month to our most improved business unit.</p>
+          <div class="go">Open dashboard →</div>
+        </a>
+      </div>
+    </details>
+    <details class="group">
+      <summary>Production Planning <span class="count">5 dashboards</span></summary>
+      <div class="cards">
+        <a class="card" href="https://fellowshipoftheringandpinion.vercel.app/">
+          <h2>RANDYS Production Planner</h2>
+          <p>Build priority, on-hand inventory, buildable quantities and transfers across the DC network.</p>
+          <div class="go">Open dashboard →</div>
+        </a>
+        <a class="card" href="https://carlisuspension.vercel.app/">
+          <h2>CARLI Production Planner</h2>
+          <p>Carli demand vs. live on-hand — fulfill-from-stock, build priority, and purchasing priority across the multi-level BoM.</p>
+          <div class="go">Open dashboard →</div>
+        </a>
+        <a class="card" href="https://iconvehicledyn.vercel.app/">
+          <h2>ICON Production Planner</h2>
+          <p>ICON Vehicle Dynamics demand vs. live on-hand — fulfill-from-stock, build priority, and purchasing priority across the multi-level BoM.</p>
+          <div class="go">Open dashboard →</div>
+        </a>
+        <a class="card" href="https://reman-z.vercel.app/">
+          <h2>Reman Planning</h2>
+          <p>Reman scheduling across transfer cases, manual transmissions, and differentials.</p>
+          <div class="go">Open dashboard →</div>
+        </a>
+        <a class="card" href="https://duragrips.vercel.app/">
+          <h2>Duragrip Scheduler</h2>
+          <p>YDG Duragrip production schedule — plant-to-DC demand, build sequence, and Gantt timeline.</p>
+          <div class="go">Open dashboard →</div>
+        </a>
+      </div>
+    </details>
+    <details class="group">
+      <summary>Supply Chain &amp; SIOP <span class="count">2 dashboards</span></summary>
+      <div class="cards">
+        <a class="card" href="https://forecast-dashboard-seven.vercel.app/">
+          <h2>SIOP Planning HUB</h2>
+          <p>Forecasting &amp; inventory stocking KPIs along with purchase order placement tools.</p>
+          <div class="go">Open dashboard →</div>
+        </a>
+        <a class="card" href="https://low-cost-rebels.vercel.app/">
+          <h2>Supply Chain Dashboard</h2>
+          <p>Cost-lowering initiatives and purchase price variance tracking.</p>
+          <div class="go">Open dashboard →</div>
+        </a>
+      </div>
+    </details>
+    <details class="group">
+      <summary>National Accounts <span class="count">2 dashboards</span></summary>
+      <div class="cards">
+        <a class="card" href="https://safetynet-bnpv.vercel.app/">
+          <h2>AutoZone Analytics Hub</h2>
+          <p>AutoZone account management tools — order analysis &amp; fill tools, historical sales, penalty &amp; fee tracker, and cancellations.</p>
+          <div class="go">Open dashboard →</div>
+        </a>
+        <a class="card" href="https://oreilly-hub.vercel.app/index.html">
+          <h2>O'Reilly Analytics Hub</h2>
+          <p>O'Reilly account management tools — order analysis &amp; fill tools, historical sales, penalty &amp; fee tracker, and cancellations.</p>
+          <div class="go">Open dashboard →</div>
+        </a>
+      </div>
+    </details>
     <footer>Confidential — RANDYS Worldwide internal operations. Data refreshed from the warehouse.</footer>
   </div>
 </body>
